@@ -37,11 +37,11 @@ def scrapper():
 				im = Image.open(BytesIO(data))
 				result['img_width'] = im.size[0]
 				result['img_height'] = im.size[0]
-			if result['img_width'] >= 600:
-				result['img_loc'] = 1
-			else:
-				result['img_loc'] = 0
-				result[a[1]] = res['content']
+				if result['img_width'] >= 600:
+					result['img_loc'] = 1
+				else:
+					result['img_loc'] = 0
+					result[a[1]] = res['content']
 			else:
 				result[a[1]] = res['content']
 		return jsonify(result)
