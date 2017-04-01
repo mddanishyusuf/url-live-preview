@@ -13,6 +13,8 @@ app = Flask(__name__)
 @app.route("/api", methods=['GET'])
 def scrapper():
 	url = request.args.get('url')
+	if url == '':
+		return jsonify({'Name':'Live Preview of any url','Author':'mddanishyusuf','Position':'Internet Architecture Internship @ Anant Corporation','Usage':'pass any url as get param'})
 	response = requests.get(url)
 	if response.status_code == 200:
 		scraped = BeautifulSoup(response.content, 'html.parser')
